@@ -1,24 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Routing from "./Routing/RoutingFunction";
+import { ThemeProvider, createTheme, createMuiTheme, responsiveFontSizes } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
 
 function App() {
+  
+  const font =  "'Rajdhani', sans-serif";
+
+  const myCustomTheme = createTheme({
+    palette: {
+      mode: "dark",
+
+      primary: {
+        main: "#017365",
+      },
+
+      background: {
+        default: "#1D1E22",
+      },
+      
+
+    },
+
+    typography:{
+      fontFamily: font,
+      
+    },
+
+    
+  });
+
+  const Theme = responsiveFontSizes(myCustomTheme);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ThemeProvider theme={Theme}>
+        <CssBaseline />
+
+        <Routing />
+      </ThemeProvider>
+    </>
   );
 }
 
